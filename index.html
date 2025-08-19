@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blurit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blurit</h1>
+            <p>Upload an image and blur selected areas</p>
+        </header>
+
+        <div class="upload-section">
+            <input type="file" id="imageUpload" accept="image/*" class="file-input">
+            <label for="imageUpload" class="upload-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7,10 12,15 17,10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Choose Image
+            </label>
+        </div>
+
+        <div class="canvas-section" id="canvasSection" style="display: none;">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="selectionMode">Selection Mode:</label>
+                    <select id="selectionMode" class="mode-selector">
+                        <option value="manual">Manual Drawing</option>
+                        <option value="region">Region Selection</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="blurIntensity">Blur Intensity:</label>
+                    <input type="range" id="blurIntensity" min="1" max="50" value="5" step="0.5" class="slider">
+                    <span id="blurValue">5px</span>
+                </div>
+                <div class="control-group">
+                    <label for="brushSize">Brush Size:</label>
+                    <input type="range" id="brushSize" min="10" max="100" value="30" class="slider">
+                    <span id="brushValue">30px</span>
+                </div>
+                <div class="button-group">
+                    <button id="clearSelection" class="btn btn-secondary">Clear Selection</button>
+                    <button id="downloadImage" class="btn btn-primary">Download Image</button>
+                </div>
+            </div>
+            
+            <div class="canvas-container">
+                <canvas id="imageCanvas"></canvas>
+                <canvas id="selectionCanvas"></canvas>
+            </div>
+            
+            <div class="instructions">
+                <p><strong>Manual Drawing:</strong> Draw over the areas you want to blur. <strong>Region Selection:</strong> Click and drag to select rectangular areas. Adjust the blur intensity and brush size using the controls above.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
